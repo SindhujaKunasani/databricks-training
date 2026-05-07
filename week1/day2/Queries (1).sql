@@ -163,25 +163,6 @@ on d.department_id = p.department_id
 group by d.name
 order by project_count desc;
 
---64. Select the employee name with the highest salary in each department.
-select e.name, d.name as department_name, e.salary
-from Employee e
-join Department d
-on e.department_id = d.department_id
-where e.salary = (
-    select max(e2.salary)
-    from Employee e2
-    where e2.department_id = e.department_id
-);
-
---65. Select the names and salaries of employees who are older than the average age of employees in their department.
-select e.name, e.salary
-from Employee e
-where e.age > (
-    select avg(e2.age)
-    from Employee e2
-    where e2.department_id = e.department_id
-);
 
 
 
